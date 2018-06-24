@@ -1,0 +1,113 @@
+﻿@using ElectricCity.Entities
+@model User
+
+@{
+    ViewBag.Title = "Tài khoản";
+    Layout = null;
+}
+
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Sufee Admin - HTML5 Admin Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-icon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/normalize.css">
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="~/assets/Admin/assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="~/assets/Admin/assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="~/assets/Admin/assets/scss/style.css">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <script src="~/assets/Admin/assets/js/jq.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body class="bg-dark">
+
+
+    <div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="~/assets/Admin/images/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="login-form">
+                    @using (Html.BeginForm("Create", "Authentication", FormMethod.Post))
+    {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Username" })
+                </div>
+               
+//Password
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    @Html.TextBoxFor(model => model.Password, new { @id = "pass", @type = "password", @class = "form-control", @placeholder = "Password" })
+                </div>
+//RePassword
+                <div class="form-group">
+                    <label>Nhập lại mật khẩu</label>
+                    @Html.TextBoxFor(model => model.Password, new { @id = "pass_confirm", @type = "password", @class = "form-control ", @placeholder = "Password" })
+                </div>
+//Email
+                <div class="form-group">
+                    <label>Email</label>
+                    @Html.TextBoxFor(model => model.Password, new { @id = "email", @class = "form-control ", @placeholder = "Email" })
+                </div>
+//NameDisplay
+                <div class="form-group">
+                    <label>Tên hiển thị</label>
+                    @Html.TextBoxFor(model => model.Password, new { @class = "form-control " })
+                </div>
+
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="check"> Đồng ý với các điều khoản và chính sách.
+                    </label>
+                </div>
+                <input type="submit" onsubmit="submit_check()" class="btn btn-primary btn-flat m-b-30 m-t-30" id="submit_btn" value="Tạo tài khoản" />
+
+                <div class="social-login-content">
+                    <div class="social-button">
+                        <button type="button" class="btn social facebook btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Đăng nhập với facebook</button>
+                        <button type="button" class="btn social twitter btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Đăng nhập với twitter</button>
+                    </div>
+                </div>
+
+                <div class="register-link m-t-15 text-center">
+                    <p> Đã có tài khoản<a href="/Admin/Authentication/Index"> Đăng nhập ngay</a></p>
+                </div>
+}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="~/assets/Admin/assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="~/assets/Admin/assets/js/popper.min.js"></script>
+    <script src="~/assets/Admin/assets/js/plugins.js"></script>
+    <script src="~/assets/Admin/assets/js/main.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,98 @@
+﻿@using PagedList
+@using PagedList.Mvc
+
+@model IPagedList<ElectricCity.Entities.User>
+
+@{
+    ViewBag.Title = "GetAllUserPaging";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section head{
+    <h1>Danh sách người dùng</h1>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên tài khoản
+        </th>
+        <th>
+            Mật khẩu
+        </th>
+        <th>
+            Tên hiển thị
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameDisplay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div class="row">
+    <div class="col-sm-12 col-md-5">
+        <div class="dataTables_info" id="bootstrap-data-table_info" role="status" aria-live="polite">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-7">
+        <div class="dataTables_paginate paging_simple_numbers" id="bootstrap-data-table_paginate"><ul class="pagination">
+            <li class="paginate_button page-item previous disabled" id="bootstrap-data-table_previous">
+                <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+            </li>
+            <li class="paginate_button page-item ">
+                @Html.PagedListPager(Model, page => Url.Action("GetAllUserPaging", new { page, @class = "btn-success" }))
+            </li>
+            <li class="paginate_button page-item next" id="bootstrap-data-table_next">
+                <a href="#" aria-controls="bootstrap-data-table" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>

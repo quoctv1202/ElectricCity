@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ElectricCity.Entities.ProductCategory>
+
+<li class="menu-item-has-children dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Danh mục sản phẩm</a>
+    <ul class="sub-menu children dropdown-menu">
+
+        @foreach (var item in Model)
+    {
+        <li><i class="fa fa-table"></i><a href="/Admin/CategoryAdmin/">@item.Name</a></li>
+}
+    </ul>
+</li>
+
+
